@@ -14,9 +14,9 @@
 - Goes into the psql shell
 
 In the psql shell:
-4. CREATE DATABASE elizabethmanifold WITH OWNER elizabethmanifold ENCODING 'UTF8'
+4. CREATE DATABASE elizabethmanifold WITH OWNER elizabethmanifold ENCODING 'UTF8';
 - Created a database for my home computer
-
+–
 5. \l
 - Listed databases
 
