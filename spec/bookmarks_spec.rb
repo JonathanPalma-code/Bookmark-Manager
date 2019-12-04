@@ -4,8 +4,16 @@ describe Bookmarks do
   subject(:bookmarks) { described_class.new }
 
   describe '#all' do
-    it { expect(bookmarks.all).to include("http://www.makersacademy.com") }
-    it { expect(bookmarks.all).to include("http://www.destroyallsoftware.com") }
-    it { expect(bookmarks.all).to include("http://www.google.com") }
+    it 'returns a list of bookmarks' do
+      connection = PG.connect(dbname: 'bookmarks_manager_test')
+      connection.exec("INSERT INTO bookmarks (url, title) VALUES ('http://www.makersacademy.com', 'makers');")
+      # connection.exec("INSERT INTO bookmarks (url) VALUES('http://www.instagram.com');")
+      # connection.exec("INSERT INTO bookmarks (url) VALUES('http://www.google.com');")
+      bookmarks = Bookmarks.new.all
+      p bookmarks
+      expect(bookmarks.first['url']).to eq("http://www.makersacademy.com") 
+      expect(bookmarks.first['title']).to eq("makers") 
+      # expect(bookmarks.all).to include("http://www.google.com") 
+    end
   end
 end
