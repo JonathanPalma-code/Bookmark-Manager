@@ -7,7 +7,7 @@ feature 'View a list of bookmarks' do
     connection.exec("INSERT INTO bookmarks VALUES(2, 'http://www.google.com', 'Google');")
 
     visit '/bookmarks'
-    expect(page).to have_content "Makers"
-    expect(page).to have_content "Google"
+    expect(page).to have_link('Makers', href: 'http://www.makersacademy.com')
+    expect(page).to have_link('Google', href: 'http://www.google.com')
   end
 end

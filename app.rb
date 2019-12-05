@@ -12,13 +12,12 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/add_bookmark' do
-    Bookmarks.add(params[:url], params[:title])
+    Bookmarks.add(url: params[:url],title: params[:title])
     redirect '/bookmarks'
   end
 
   get '/bookmarks' do
     @bookmarks = Bookmarks.new.all
-    p @bookmarks
     erb :viewing_bookmark
   end
 
