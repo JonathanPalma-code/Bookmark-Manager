@@ -4,6 +4,7 @@ require 'capybara/rspec'
 require 'sinatra'
 require 'capybara'
 require_relative './setup_test_database'
+require './spec/features/web_helpers'
 
 Capybara.app = BookmarkManager
 
